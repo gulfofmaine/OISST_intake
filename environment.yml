@@ -1,0 +1,29 @@
+name: OISST_intake
+channels:
+  - conda-forge
+dependencies:
+  - python~=3.9
+  - aiohttp
+  - bs4
+  - cftime
+  - dask
+  - distributed
+  - fsspec
+  - h5py>=3.0
+  - intake
+  - intake-xarray
+  - git
+  - numcodecs>=0.8.0
+  - pandas
+  - pip
+  - tqdm
+  - ujson
+  - xarray=0.19.0
+  - httpx
+  - zarr
+  - pip:
+    # Waiting for bug fixes from https://github.com/intake/fsspec-reference-maker/pull/75 to land and get release to deal with issues from time getting offset
+    # - fsspec-reference-maker
+    # - git+https://github.com/intake/fsspec-reference-maker.git
+    # - git+https://github.com/lsterzinger/fsspec-reference-maker.git@multizarr_datetimes
+    - git+https://github.com/lsterzinger/fsspec-reference-maker.git@5072d614cbb6cfa0f497dece422a953c7c4812ab

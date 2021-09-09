@@ -1,0 +1,32 @@
+name: Update OISST catalogs
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  update:
+    name: Update OISST catalogs
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Provision with µMamba
+      uses: mamba-org/provision-with-micromamba@v10
+
+    - name: Update OISST data
+      shell: bash -l {0}
+      run: python daily.py
+
+    - name: Commit and push if changed
+      run: |
+        git config user.name "Auto OISST"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
+        git push
