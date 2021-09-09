@@ -18,6 +18,12 @@ jobs:
     - name: Provision with µMamba
       uses: mamba-org/provision-with-micromamba@v10
 
+    - name: List packages
+      shell: bash -l {0}
+      run: |
+        which python
+        python -m pip list
+
     - name: Update OISST data
       shell: bash -l {0}
       run: python daily.py
