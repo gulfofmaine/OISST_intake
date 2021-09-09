@@ -25,4 +25,4 @@ dependencies:
     - pangeo-forge-recipes>=0.6.0
     # Waiting for bug fixes from https://github.com/intake/fsspec-reference-maker/pull/75 to land and get release to deal with issues from time getting offset
     # - fsspec-reference-maker
-    - git+https://github.com/lsterzinger/fsspec-reference-maker.git@5072d614cbb6cfa0f497dece422a953c7c4812ab
+    # - git+https://github.com/lsterzinger/fsspec-reference-maker.git@5072d614cbb6cfa0f497dece422a953c7c4812ab
