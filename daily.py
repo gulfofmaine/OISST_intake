@@ -19,6 +19,8 @@ import requests
 START_DATE = "1981-09-01"
 # START_DATE = "2018-12-01"
 
+UPDATE_TIME_DELTA = 5.0 if os.environ.get("CI", False) else 0.1
+
 
 def current_downloads():
     """
@@ -126,8 +128,10 @@ if __name__ == "__main__":
 
     print("Calculating preliminary OISST recipe")
 
-    with ProgressBar():
+    with ProgressBar(dt=UPDATE_TIME_DELTA):
         delayed.compute()
+
+    prelim_target.rm("reference.yaml")
 
     print("Generating complete OISST recipe")
 
@@ -163,6 +167,7 @@ if __name__ == "__main__":
 
     print("Calculating complete OISST recipe")
 
-    with ProgressBar():
+    with ProgressBar(dt=UPDATE_TIME_DELTA):
         delayed.compute()
 
+    complete_target.rm("reference.yaml")

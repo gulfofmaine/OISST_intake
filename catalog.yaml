@@ -1,0 +1,24 @@
+sources:
+  complete:
+    args:
+      chunks: {}
+      consolidated: false
+      storage_options:
+        fo: "{{ CATALOG_DIR }}/complete/reference.json"
+        remote_options: {}
+        remote_protocol: https
+      urlpath: reference://
+    description: "Complete OISST daily data"
+    driver: intake_xarray.xzarr.ZarrSource
+
+  preliminary:
+    args:
+      chunks: {}
+      consolidated: false
+      storage_options:
+        fo: "{{ CATALOG_DIR }}/preliminary/reference.json"
+        remote_options: {}
+        remote_protocol: https
+      urlpath: reference://
+    description: "Preliminary OISST daily data"
+    driver: intake_xarray.xzarr.ZarrSource
